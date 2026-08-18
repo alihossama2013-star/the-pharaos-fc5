@@ -1,0 +1,209 @@
+{
+  "entities": {
+    "Player": {
+      "title": "Player",
+      "description": "Registered player in squad stats",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "username": { "type": "string" },
+        "position": { "type": "string" },
+        "goals": { "type": "number" },
+        "assists": { "type": "number" },
+        "matchesPlayed": { "type": "number" },
+        "avatar": { "type": "string" }
+      },
+      "required": ["id", "name", "username", "position", "goals", "assists", "matchesPlayed", "avatar"]
+    },
+    "Match": {
+      "title": "Match",
+      "description": "Logged match record for The Pharaohs FC",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "opponent": { "type": "string" },
+        "result": { "type": "string" },
+        "teamGoals": { "type": "number" },
+        "opponentGoals": { "type": "number" },
+        "scorers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "playerId": { "type": "string" },
+              "goals": { "type": "number" }
+            }
+          }
+        },
+        "assisters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "playerId": { "type": "string" },
+              "assists": { "type": "number" }
+            }
+          }
+        },
+        "mvpPlayerId": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "date", "opponent", "result", "teamGoals", "opponentGoals"]
+    },
+    "CommunityVideo": {
+      "title": "Community Video",
+      "description": "Imported or uploaded match video shared by squad members",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "uploadedByUsername": { "type": "string" },
+        "uploadedByName": { "type": "string" },
+        "uploadedAt": { "type": "string" },
+        "isChunked": { "type": "boolean" },
+        "totalChunks": { "type": "number" },
+        "fileType": { "type": "string" }
+      },
+      "required": ["id", "title", "uploadedByUsername", "uploadedByName", "uploadedAt"]
+    },
+    "VideoChunk": {
+      "title": "Video Chunk",
+      "description": "Chunk of base64 video data for MP4 sync",
+      "properties": {
+        "index": { "type": "number" },
+        "data": { "type": "string" }
+      },
+      "required": ["index", "data"]
+    },
+    "UpcomingMatch": {
+      "title": "Upcoming Match",
+      "description": "Scheduled future fixture logged exclusively by Ali Hossam",
+      "properties": {
+        "id": { "type": "string" },
+        "opponent": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "location": { "type": "string" },
+        "competition": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "opponent", "date"]
+    },
+    "IndividualAward": {
+      "title": "Individual Award",
+      "description": "Player of the Month and Golden Boot awards for squad members",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["PLAYER_OF_THE_MONTH", "GOLDEN_BOOT"] },
+        "datePeriod": { "type": "string" },
+        "dateDisplay": { "type": "string" },
+        "playerId": { "type": "string" },
+        "playerName": { "type": "string" },
+        "playerAvatar": { "type": "string" },
+        "playerPos": { "type": "string" },
+        "statGoals": { "type": "number" },
+        "statAssists": { "type": "number" },
+        "statMatches": { "type": "number" },
+        "statRating": { "type": "number" },
+        "title": { "type": "string" },
+        "notes": { "type": "string" },
+        "awardedBy": { "type": "string" },
+        "awardedAt": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "type", "datePeriod", "playerId"]
+    },
+    "SquadTask": {
+      "title": "Squad Task",
+      "description": "Squad duties, tactical tasks, and matchday missions imported and verified by Ali Hossam",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string", "enum": ["MATCHDAY", "TRAINING", "TACTICAL", "FITNESS", "ADMIN", "COMMUNITY"] },
+        "priority": { "type": "string", "enum": ["URGENT", "HIGH", "MEDIUM", "LOW"] },
+        "assignedTo": { "type": "string" },
+        "assignedToName": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "dueTime": { "type": "string" },
+        "isCompleted": { "type": "boolean" },
+        "completedAt": { "type": "string" },
+        "completedBy": { "type": "string" },
+        "importedBy": { "type": "string" },
+        "importedAt": { "type": "string" },
+        "orderIndex": { "type": "number" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "rewardXp": { "type": "number" }
+      },
+      "required": ["id", "title", "category", "priority", "isCompleted", "importedBy", "importedAt"]
+    },
+    "PromoVideo": {
+      "title": "Promo Video",
+      "description": "Official club promotional video synchronized across all accounts and devices worldwide",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "isChunked": { "type": "boolean" },
+        "totalChunks": { "type": "number" },
+        "fileType": { "type": "string" },
+        "updatedBy": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  },
+  "firestore": {
+    "/tasks/{taskId}": {
+      "schema": "SquadTask",
+      "description": "Team tasks and missions managed by Ali Hossam and synced globally"
+    },
+    "/players/{playerId}": {
+      "schema": "Player",
+      "description": "Player profiles"
+    },
+    "/matches/{matchId}": {
+      "schema": "Match",
+      "description": "Match records"
+    },
+    "/upcoming_matches/{upcomingId}": {
+      "schema": "UpcomingMatch",
+      "description": "Scheduled upcoming fixtures"
+    },
+    "/individual_awards/{awardId}": {
+      "schema": "IndividualAward",
+      "description": "Player of the Month and Golden Boot awards synchronized globally"
+    },
+    "/community_videos/{videoId}": {
+      "schema": "CommunityVideo",
+      "description": "User uploaded videos gallery"
+    },
+    "/community_videos/{videoId}/chunks/{chunkId}": {
+      "schema": "VideoChunk",
+      "description": "Chunks of base64 MP4 video data"
+    },
+    "/promo_video/{id}": {
+      "schema": "PromoVideo",
+      "description": "Official squad promo video synced globally"
+    },
+    "/promo_video/{id}/chunks/{chunkId}": {
+      "schema": "VideoChunk",
+      "description": "Chunks of base64 promo MP4 video data"
+    },
+    "/fc_mobile_cards/{cardId}": {
+      "schema": "FcCard",
+      "description": "EA FC Mobile custom card stats"
+    },
+    "/tactics/{conditionId}": {
+      "schema": "TacticBoard",
+      "description": "Real-time sync tactic boards for winning, losing, and drawing"
+    },
+    "/_connection_check_/{healthId}": {
+      "schema": "ConnectionCheck",
+      "description": "Health connection check"
+    }
+  }
+}

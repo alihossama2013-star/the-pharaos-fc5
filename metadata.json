@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix The Pharaohs FC",
+  "description": "The Pharaohs FC Internal Squad Management and Team Dashboard",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

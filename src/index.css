@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #050505;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #252525;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+@keyframes goldPulseGlow {
+  0%, 100% {
+    border-color: rgba(255, 215, 0, 0.95);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.45), 0 0 35px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(255, 215, 0, 0.15);
+  }
+  50% {
+    border-color: rgba(255, 235, 120, 1);
+    box-shadow: 0 0 28px rgba(255, 215, 0, 0.8), 0 0 55px rgba(212, 175, 55, 0.5), inset 0 0 25px rgba(255, 215, 0, 0.3);
+  }
+}
+
+.award-gold-pulse {
+  animation: goldPulseGlow 2.2s infinite ease-in-out;
+}
+
